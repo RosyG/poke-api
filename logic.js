@@ -1,8 +1,8 @@
-const limit = 10;
-const url_limit = `https://pokeapi.co/api/v2/pokemon?offset=${limit}&limit=${limit}`;
+const limitNum = 10;
+const url_limitNum = `https://pokeapi.co/api/v2/pokemon?offset=${limitNum}&limit=${limitNum}`;
 // const url = 'https://pokeapi.co/api/v2/pokemon/56';
 let arrPokes = [];
-window.onload = getAllData(url_limit);
+window.onload = getAllData(url_limitNum);
 
 function getAllData (url, contextNode='') {
     fetch(url)
@@ -24,7 +24,7 @@ function drawPokemon(pokemon) {
     let namePokeNode = document.createElement("div");
     let url_img = pokemon['sprites']['front_default'];
     namePokeNode.innerHTML =`
-    <div id="${pokemon.name}" class="poke-container" onclick="selectedName('${pokemon.name}', this)">
+    <div id="${pokemon.name}" class="poke-container" onclick="selectedPoke('${pokemon.name}', this)">
         <img src="${url_img}" alt="img-${pokemon.name}"/>
         <p>${pokemon.name}</p>
     </div>`;
@@ -32,7 +32,7 @@ function drawPokemon(pokemon) {
     return
 }
 
-const selectedName = (pokeInfo, contextNode='') => {
+function selectedPoke (pokeInfo, contextNode='') {
     console.log('name: ', pokeInfo);
     console.log('contextNode: ', contextNode);
     console.log('array:  ', arrPokes);
